@@ -8,9 +8,17 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-define("BASE_DIR", Phar::running(false) !== "" ? Phar::running() : __DIR__);
 
-require_once BASE_DIR . "/vendor/autoload.php";
+var_dump(dirname(__DIR__) . "/vendor/autoload.php");
+var_dump(dirname(__DIR__, 3) . "/autoload.php");
+if (is_file($autoloader = dirname(__DIR__) . "/vendor/autoload.php"))
+{
+    require_once $autoloader;
+}
+else if (is_file($autoloader = dirname(__DIR__, 3) . "/autoload.php"))
+{
+    require_once $autoloader;
+}
 
 $commandName = "extract-translations";
 $version = "0.0.1";
