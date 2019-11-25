@@ -1,5 +1,5 @@
 {
-    "name": "becklyn/translation-extractor",
+    "name": "becklyn/translations-extractor",
     "type": "lib",
     "description": "Extracts translations from the given directory.",
     "homepage": "https://github.com/Becklyn/translations-extractor",
