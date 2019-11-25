@@ -1,0 +1,43 @@
+{
+    "name": "becklyn/translation-extractor",
+    "type": "lib",
+    "description": "Extracts translations from the given directory.",
+    "homepage": "https://github.com/Becklyn/translations-extractor",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Becklyn Studios",
+            "homepage": "https://becklyn.com/"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "ext-json": "*",
+        "php-translation/extractor": "^1.7",
+        "symfony/console": "^5.0",
+        "symfony/finder": "^4.0",
+        "symfony/form": "^5.0",
+        "symfony/twig-bridge": "^5.0",
+        "symfony/validator": "^4.0",
+        "twig/twig": "^2.12"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Becklyn\\TranslationsExtractor\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Becklyn\\TranslationsExtractor\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/extract-translations"
+    ],
+    "require-dev": {
+        "symfony/phpunit-bridge": "^5.0"
+    }
+}
