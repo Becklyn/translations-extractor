@@ -28,6 +28,7 @@ if (null === $loader)
 }
 
 // include project's autoloader
+// this mirrors the structure of projects using the `composer-bin-plugin`
 if (is_file($projectAutoloader = dirname(__DIR__, 6) . "/vendor/composer/autoload_psr4.php"))
 {
     $projectVendors = include $projectAutoloader;
