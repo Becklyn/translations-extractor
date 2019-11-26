@@ -35,7 +35,7 @@ You can pass in extension names for twig, so that Twig doesn't complain about mi
 *   `--mock-test` the names of the tests to mock
 
 ```bash
-./vendor/bin/extract-translations src/ --mock-filter normalize
+./vendor/bin/extract-translations src/ --mock-filter normalize --mock-filter normalize_another
 ```
 
 There is a list of predefined mocks, take a look in `MockExtension`.
