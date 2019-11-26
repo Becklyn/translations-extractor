@@ -30,9 +30,9 @@ As arguments, pass the list of directories to search in.
 
 You can pass in extension names for twig, so that Twig doesn't complain about missing functions (or filters, etc.).
 
-*   `--mock-functions` the names of the functions to mock
-*   `--mock-filters` the names of the filters to mock
-*   `--mock-tests` the names of the tests to mock
+*   `--mock-function` the names of the functions to mock
+*   `--mock-filter` the names of the filters to mock
+*   `--mock-test` the names of the tests to mock
 
 ```bash
 ./vendor/bin/extract-translations src/ --mock-filter normalize
