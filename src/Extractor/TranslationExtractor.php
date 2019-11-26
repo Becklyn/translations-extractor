@@ -11,6 +11,7 @@ use Becklyn\TranslationsExtractor\Extractor\Visitor\CustomConstraintDefaultMessa
 use Becklyn\TranslationsExtractor\Extractor\Visitor\FormOptionLabelsVisitor;
 use Becklyn\TranslationsExtractor\Extractor\Visitor\PropertyValidationVisitor;
 use Symfony\Bridge\Twig\Extension\FormExtension;
+use Symfony\Bridge\Twig\Extension\TranslationExtension;
 use Symfony\Component\Finder\Finder;
 use Translation\Extractor\Extractor;
 use Translation\Extractor\FileExtractor\FileExtractor;
@@ -18,7 +19,6 @@ use Translation\Extractor\FileExtractor\PHPFileExtractor;
 use Translation\Extractor\FileExtractor\TwigFileExtractor;
 use Translation\Extractor\Model\SourceCollection;
 use Translation\Extractor\Model\SourceLocation;
-use Translation\Extractor\Twig\TranslationExtension;
 use Translation\Extractor\Visitor\Php\Symfony\ContainerAwareTrans;
 use Translation\Extractor\Visitor\Php\Symfony\ContainerAwareTransChoice;
 use Translation\Extractor\Visitor\Php\Symfony\FlashMessage;
@@ -37,7 +37,6 @@ class TranslationExtractor
 
 
     /**
-     * @param AbstractExtension $mockExtension
      */
     public function __construct (AbstractExtension $mockExtension)
     {
