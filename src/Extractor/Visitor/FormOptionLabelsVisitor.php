@@ -2,6 +2,7 @@
 
 namespace Becklyn\TranslationsExtractor\Extractor\Visitor;
 
+use Becklyn\TranslationsExtractor\Extractor\Visitor\FormOptionsVisitor\ChildFormLabelsVisitor;
 use Becklyn\TranslationsExtractor\Extractor\Visitor\Helper\ParserInteractionTrait;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
