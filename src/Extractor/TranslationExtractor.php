@@ -37,7 +37,6 @@ class TranslationExtractor
 
 
     /**
-     * @param AbstractExtension $mockExtension
      */
     public function __construct (AbstractExtension $mockExtension)
     {

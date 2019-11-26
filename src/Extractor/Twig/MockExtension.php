@@ -28,9 +28,6 @@ class MockExtension extends AbstractExtension
 
 
     /**
-     * @param array $functions
-     * @param array $filters
-     * @param array $tests
      */
     public function __construct (array $functions, array $filters, array $tests)
     {
