@@ -10,7 +10,10 @@ class BackendTranslatorVisitorTest extends TestCase
     use PhpExtractorTestTrait;
 
 
-    public function testExtract ()
+    /**
+     *
+     */
+    public function testExtract () : void
     {
         $extracted = $this->extractMessagesWithVisitorFrom(new BackendTranslatorVisitor(), ["BackendTranslatorVisitor"]);
 
