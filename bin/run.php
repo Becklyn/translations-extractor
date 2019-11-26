@@ -48,16 +48,16 @@ $version = "0.0.1";
 (new Application($commandName, $version))
     ->register($commandName)
     ->addArgument("directories", InputArgument::IS_ARRAY | InputArgument::REQUIRED, "The directories to extract the translations from")
-    ->addOption("mock-functions", null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, "Twig functions to shim", [])
-    ->addOption("mock-filters", null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, "Twig filters to shim", [])
-    ->addOption("mock-tests", null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, "Twig tests to shim", [])
+    ->addOption("mock-function", null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, "Twig functions to shim", [])
+    ->addOption("mock-filter", null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, "Twig filters to shim", [])
+    ->addOption("mock-test", null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, "Twig tests to shim", [])
     ->setCode(
         function (InputInterface $input, OutputInterface $output)
         {
             $mockExtension = new MockExtension(
-                $input->getOption("mock-functions"),
-                $input->getOption("mock-filters"),
-                $input->getOption("mock-tests")
+                $input->getOption("mock-function"),
+                $input->getOption("mock-filter"),
+                $input->getOption("mock-test")
             );
 
             $extractor = new TranslationExtractor($mockExtension);
