@@ -3,13 +3,13 @@
 namespace Becklyn\TranslationsExtractor\Extractor;
 
 use Becklyn\TranslationsExtractor\Extractor\Integration\NameResolverIntegration;
-use Becklyn\TranslationsExtractor\Extractor\Visitor\BackendTranslatorVisitor;
 use Becklyn\TranslationsExtractor\Extractor\Visitor\CallbackValidationVisitor;
 use Becklyn\TranslationsExtractor\Extractor\Visitor\ClassValidationVisitor;
 use Becklyn\TranslationsExtractor\Extractor\Visitor\ConstructorParameterVisitor;
 use Becklyn\TranslationsExtractor\Extractor\Visitor\CustomConstraintDefaultMessagesVisitor;
 use Becklyn\TranslationsExtractor\Extractor\Visitor\FormOptionLabelsVisitor;
 use Becklyn\TranslationsExtractor\Extractor\Visitor\PropertyValidationVisitor;
+use Becklyn\TranslationsExtractor\Extractor\Visitor\TranslatorVisitor;
 use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
 use Symfony\Component\Finder\Finder;
@@ -19,8 +19,6 @@ use Translation\Extractor\FileExtractor\PHPFileExtractor;
 use Translation\Extractor\FileExtractor\TwigFileExtractor;
 use Translation\Extractor\Model\SourceCollection;
 use Translation\Extractor\Model\SourceLocation;
-use Translation\Extractor\Visitor\Php\Symfony\ContainerAwareTrans;
-use Translation\Extractor\Visitor\Php\Symfony\ContainerAwareTransChoice;
 use Translation\Extractor\Visitor\Php\Symfony\FlashMessage;
 use Translation\Extractor\Visitor\Php\Symfony\FormTypeChoices;
 use Translation\Extractor\Visitor\Twig\TwigVisitorFactory;
@@ -112,17 +110,16 @@ class TranslationExtractor
         $fileExtractor->addVisitor(new NameResolverIntegration());
 
         // add remaining visitors
-        $fileExtractor->addVisitor(new BackendTranslatorVisitor());
         $fileExtractor->addVisitor(new CallbackValidationVisitor());
         $fileExtractor->addVisitor(new ClassValidationVisitor());
         $fileExtractor->addVisitor(new ConstructorParameterVisitor());
-        $fileExtractor->addVisitor(new ContainerAwareTrans());
-        $fileExtractor->addVisitor(new ContainerAwareTransChoice());
+        // don't add container aware trans visitors here, as they have too many false-positives with the BackendTranslator.
         $fileExtractor->addVisitor(new CustomConstraintDefaultMessagesVisitor());
         $fileExtractor->addVisitor(new FlashMessage());
         $fileExtractor->addVisitor(new FormOptionLabelsVisitor());
         $fileExtractor->addVisitor(new FormTypeChoices());
         $fileExtractor->addVisitor(new PropertyValidationVisitor());
+        $fileExtractor->addVisitor(new TranslatorVisitor());
 
         return $fileExtractor;
     }

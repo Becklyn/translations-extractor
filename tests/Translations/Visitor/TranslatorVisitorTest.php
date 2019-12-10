@@ -2,10 +2,10 @@
 
 namespace Tests\Becklyn\TranslationsExtractor\Translations\Visitor;
 
-use Becklyn\TranslationsExtractor\Extractor\Visitor\BackendTranslatorVisitor;
+use Becklyn\TranslationsExtractor\Extractor\Visitor\TranslatorVisitor;
 use PHPUnit\Framework\TestCase;
 
-class BackendTranslatorVisitorTest extends TestCase
+class TranslatorVisitorTest extends TestCase
 {
     use PhpExtractorTestTrait;
 
@@ -15,9 +15,17 @@ class BackendTranslatorVisitorTest extends TestCase
      */
     public function testExtract () : void
     {
-        $extracted = $this->extractMessagesWithVisitorFrom(new BackendTranslatorVisitor(), ["BackendTranslatorVisitor"]);
+        $extracted = $this->extractMessagesWithVisitorFrom(new TranslatorVisitor(), ["TranslatorVisitor"]);
 
         self::assertEquals([
+            "messages" => [
+                "translator.trans.property",
+                "translator.trans.var",
+            ],
+            "other" => [
+                "translator.trans.property",
+                "translator.trans.var",
+            ],
             "backend" => [
                 "backendTranslator.trans.property",
                 "backendTranslator.trans.var",
