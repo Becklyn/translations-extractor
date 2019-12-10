@@ -5,9 +5,9 @@ namespace Becklyn\TranslationsExtractor\Extractor\Visitor;
 use PhpParser\Node;
 
 /**
- * Searches for calls using the backend translator
+ * Searches for calls using the backend translator and regular translator calls.
  */
-class BackendTranslatorVisitor extends AbstractVisitor
+class TranslatorVisitor extends AbstractVisitor
 {
     /**
      * @inheritDoc
@@ -26,19 +26,28 @@ class BackendTranslatorVisitor extends AbstractVisitor
             return null;
         }
 
-        if (
-            $this->isNamedCall($node, "backendTranslator", "trans")
-            || $this->isNamedCall($node, "backendTranslator", "t")
-            || $this->isNamedCall($node, "translator", "t")
-        )
+        if (null !== $label = $this->getStringArgument($node, 0))
         {
-            if (null !== $label = $this->getStringArgument($node, 0))
+            if (
+                $this->isNamedCall($node, "backendTranslator", "trans")
+                || $this->isNamedCall($node, "backendTranslator", "t")
+                || $this->isNamedCall($node, "translator", "t")
+            )
             {
                 $this->addLocation(
                     $label,
                     $node->getAttribute("startLine"),
                     $node,
                     ["domain" => "backend"]
+                );
+            }
+            elseif ($this->isNamedCall($node, "translator", "trans"))
+            {
+                $this->addLocation(
+                    $label,
+                    $node->getAttribute("startLine"),
+                    $node,
+                    ["domain" => $this->getStringArgument($node, 2) ?? "messages"]
                 );
             }
         }
