@@ -17,38 +17,30 @@ use Translation\Extractor\Extractor;
 use Translation\Extractor\FileExtractor\FileExtractor;
 use Translation\Extractor\FileExtractor\PHPFileExtractor;
 use Translation\Extractor\FileExtractor\TwigFileExtractor;
-use Translation\Extractor\Model\SourceCollection;
 use Translation\Extractor\Model\SourceLocation;
 use Translation\Extractor\Visitor\Php\Symfony\FlashMessage;
 use Translation\Extractor\Visitor\Php\Symfony\FormTypeChoices;
-use Translation\Extractor\Visitor\Twig\TwigVisitorFactory;
+use Translation\Extractor\Visitor\Twig\TwigVisitor;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\Loader\FilesystemLoader;
 
 class TranslationExtractor
 {
-    /**
-     * @var AbstractExtension
-     */
-    private $mockExtension;
+    private AbstractExtension $mockExtension;
 
 
-    /**
-     */
     public function __construct (AbstractExtension $mockExtension)
     {
         $this->mockExtension = $mockExtension;
     }
 
-    /**
-     * @return string
-     */
+
     public function extract (array $dirs) : array
     {
         if (empty($dirs))
         {
-            return new SourceCollection();
+            return [];
         }
 
         $extractor = new Extractor();
@@ -125,9 +117,6 @@ class TranslationExtractor
     }
 
 
-    /**
-     * @return SourceCollection
-     */
     private function createTwigExtractor (array $dirs) : FileExtractor
     {
         $loader = new FilesystemLoader($dirs);
@@ -140,7 +129,7 @@ class TranslationExtractor
         $twig->addExtension($this->mockExtension);
 
         // add visitors
-        $fileExtractor->addVisitor(TwigVisitorFactory::create());
+        $fileExtractor->addVisitor(new TwigVisitor());
 
         return $fileExtractor;
     }

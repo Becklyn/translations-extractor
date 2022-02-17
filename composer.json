@@ -1,32 +1,29 @@
 {
     "name": "becklyn/translations-extractor",
-    "type": "lib",
     "description": "Extracts translations from the given directory.",
-    "homepage": "https://github.com/Becklyn/translations-extractor",
     "license": "BSD-3-Clause",
+    "type": "lib",
     "authors": [
         {
             "name": "Becklyn Studios",
             "homepage": "https://becklyn.com/"
         }
     ],
+    "homepage": "https://github.com/Becklyn/translations-extractor",
     "require": {
-        "php": "^7.1",
+        "php": ">=7.4",
         "ext-json": "*",
-        "php-translation/extractor": "^1.7",
-        "symfony/console": "^4.0 || ^5.0",
-        "symfony/finder": "^4.0",
-        "symfony/form": "^4.0 || ^5.0",
-        "symfony/twig-bridge": "^4.0 || ^5.0",
-        "symfony/validator": "^4.0 || ^5.0",
-        "twig/twig": "^2.12"
+        "php-translation/extractor": "^2.1.0",
+        "symfony/console": "^v5.4.3 || ^v6.0.3",
+        "symfony/finder": "^v5.4.3 || ^v6.0.3",
+        "symfony/form": "^v5.4.3 || ^v6.0.3",
+        "symfony/twig-bridge": "^v5.4.3 || ^v6.0.3",
+        "symfony/validator": "^v5.4.3 || ^v6.0.3",
+        "twig/twig": "^3.3.8"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
-        "symfony/phpunit-bridge": "^5.0"
-    },
-    "config": {
-        "sort-packages": true
+        "symfony/phpunit-bridge": "^v5.4.3 || ^v6.0.3"
     },
     "autoload": {
         "psr-4": {
@@ -40,5 +37,8 @@
     },
     "bin": [
         "bin/extract-translations"
-    ]
+    ],
+    "config": {
+        "sort-packages": true
+    }
 }
