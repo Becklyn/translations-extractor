@@ -1,3 +1,9 @@
+1.1.1
+=====
+
+*   (internal) Fix Doctrine deprecations.
+
+
 1.1.0
 =====
 
