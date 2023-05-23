@@ -39,9 +39,6 @@ if (is_file($projectAutoloader = dirname(__DIR__, 6) . "/vendor/composer/autoloa
     }
 }
 
-// register autoloader for annotations
-AnnotationRegistry::registerLoader([$loader, "loadClass"]);
-
 $commandName = "extract-translations";
 $version = "0.0.1";
 
